@@ -68,7 +68,7 @@ export class CharacterComponent {
         },
         () => { // on completion
           this.resultsComplete.next(true)
-          this.loading = false;
+          // this.loading = false;
           this.loadingEmit.next(false)
         }
       );
