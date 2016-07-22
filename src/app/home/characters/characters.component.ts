@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Character } from '../../models/character-models'
 import { AppState } from '../../app.service';
 import { CharacterData } from '../character_service/character.service';
@@ -10,11 +10,17 @@ import { ApiService } from '../api_service/api.service'
   providers: [
     CharacterData, ApiService
   ],
+  outputs: ['loadingEmit', 'results', 'resultsComplete', 'updateCharacter'],
   pipes: [ ],
-  styleUrls: [ './characters.style.css' ],
+  styleUrls: [ './characters.style.css', './spinner.css' ],
   templateUrl: './characters.template.html'
 })
 export class CharacterComponent {
+  private loadingEmit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private loading : boolean = false;
+  private results: EventEmitter<any> = new EventEmitter<any>();
+  private resultsComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private updateCharacter: EventEmitter<any> = new EventEmitter<any>();
   private data: any
   //set empty characterArray of type Character(from character model)
   private characterArray: Array<Character> = []
@@ -35,30 +41,43 @@ export class CharacterComponent {
       });
   }
 
+  checkCharacter(character) {
+    if (  this.appState.get().character_chosen === character.name) {
+      return true
+    }
+    else return false;
+
+  }
   submitState(state) {
     this.appState.set(state)
     console.log('app state is: ', this.appState.get())
   }
 
   getApiData(character) {
+    //emit loading event
+    this.loadingEmit.next(true);
+    this.loading = true;
     this.apiService.search(character)
     .subscribe((results) => { // on sucesss
           console.log(results)
+          this.results.next(results)
         },
         (err: any) => { // on error
           console.log(err);
         },
         () => { // on completion
-          console.log('complete')
+          this.resultsComplete.next(true)
+          this.loading = false;
+          this.loadingEmit.next(false)
         }
       );
   }
 
   logState(character) {
-    console.log('hitting log state')
     this.localState.character_chosen = character.name; this.localState.displaying_movies = false;
     this.submitState(this.localState);
     this.getApiData(character)
+    this.updateCharacter.next(character.name)
     console.log('localState is: ', this.localState)
     }
 

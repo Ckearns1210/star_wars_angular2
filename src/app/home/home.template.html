@@ -1,4 +1,4 @@
 <div class="card-container">
-<characters></characters>
-<character-detail></character-detail>
+<characters (updateCharacter)="updateCharacter($event)" (results)="updateResults($event)"></characters>
+<character-detail [currentCharacterName] = "currentCharacterName" [results] = "results"></character-detail>
 </div>
