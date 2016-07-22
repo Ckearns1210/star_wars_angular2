@@ -13,18 +13,43 @@ export class ApiService {
   }
 
   search(character): Observable<any> {
-    let that = this
-    let queryUrl: string = character.url;
-    return this.http.get(queryUrl)
-      .map((response: Response) => {
-        this.characterResults = response.json().films
-        return this.characterResults
-      })
-      .flatMap((film) => {
-        return that.http.get(film[0])
-        .map((response: Response) => {
-          return response.json().title
+  let that = this
+  let queryUrl: string = character.url;
+     return this.http.get(character.url)
+     //flatten out results of first results stream and extract the films
+      .flatMap((response: Response) => response.json().films)
+      //flatten out the second request,
+      .flatMap((film: string) => this.http.get(film),
+               (_, resp) => resp.json().title)
+  }
+
+
+
+    searchMovies(arr){
+      Observable.forkJoin(
+        arr.forEach((film) => {
+           return this.http.get(film).map((res:Response) => {
+            res.json()
+          })
         })
+      ).subscribe((results)=> {
+        console.log(results)
       })
+
     }
+      // .map((film) => {
+      //   .flatMap((film) => {
+      //     return that.http.get(film)
+      //       .map((response: Response) => {
+      //         response.json()
+      //       })
+      //   })
+      // })
+      // .flatMap((film) => {
+      //   return that.http.get(film)
+      //     .map((response: Response) => {
+      //       response.json()
+      //     })
+      // })
+
 }
