@@ -62,7 +62,8 @@ export class CharacterComponent {
           console.log(results)
           this.results.next(results)
         },
-        (err: any) => { // on error
+        (err: any) => {
+          // on error
           console.log(err);
         },
         () => { // on completion

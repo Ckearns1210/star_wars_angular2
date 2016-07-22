@@ -13,14 +13,14 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 })
 export class Home {
    currentCharacterName: string
-   results: any
+   results: Array<any> = []
 
     updateCharacter(name: string) {
       this.currentCharacterName = name
     }
 
     updateResults(result) {
-      this.results = result
+      this.results.push(result)
       console.log(this.results)
     }
 }

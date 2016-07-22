@@ -20,6 +20,7 @@ export class ApiService {
       .flatMap((response: Response) => response.json().films)
       //flatten out the second request,
       .flatMap((film: string) => this.http.get(film),
-               (_, resp) => resp.json().title)
+               (_, resp) => resp.json())
+      .map(({title, release_date}) => ({title, release_date}))
   }
 }
