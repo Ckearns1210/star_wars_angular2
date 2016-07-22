@@ -7,13 +7,10 @@ import 'rxjs/Rx'
 
 @Injectable()
 export class ApiService {
-  characterResults: any
-  filmResults: any
   constructor(public http: Http) {
   }
 
   search(character): Observable<any> {
-    let that = this
     let queryUrl: string = character.url;
     return this.http.get(character.url)
       //flatten out results of first results stream and extract the films, flatMap performs map, but instead of returning an observable, it subscribes to each observable returning the data.

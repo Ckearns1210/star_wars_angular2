@@ -10,7 +10,7 @@ import { ApiService } from '../api_service/api.service'
   providers: [
     CharacterData, ApiService
   ],
-  outputs: ['loadingEmit', 'results', 'resultsComplete', 'updateCharacter'],
+  outputs: ['loadingEmit', 'results', 'resultsComplete', 'updateCharacter', 'cardState'],
   pipes: [ ],
   styleUrls: [ './characters.style.css', './spinner.css' ],
   templateUrl: './characters.template.html'
@@ -19,7 +19,7 @@ export class CharacterComponent {
   private loadingEmit: EventEmitter<boolean> = new EventEmitter<boolean>();
   private loading : boolean = false;
   private results: EventEmitter<any> = new EventEmitter<any>();
-  private resultsComplete: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public cardState: EventEmitter<boolean> = new EventEmitter<boolean>();
   private updateCharacter: EventEmitter<any> = new EventEmitter<any>();
   private data: any
   //set empty characterArray of type Character(from character model)
@@ -32,6 +32,7 @@ export class CharacterComponent {
 
   ngOnInit(): void {
     //subscribe to observable returned from http call in service, map over return and create iterable array of characters from character model to use in template for intial data
+    this.cardState.next({state: 'void'})
     this.data = this.character.getData().subscribe(data =>
       {
         const dataArray= data.characters
@@ -67,8 +68,8 @@ export class CharacterComponent {
           console.log(err);
         },
         () => { // on completion
-          this.resultsComplete.next(true)
-          // this.loading = false;
+          this.cardState.next({state: 'active'})
+          this.loading = false;
           this.loadingEmit.next(false)
         }
       );
@@ -90,4 +91,6 @@ export class CharacterComponent {
     }
     else return true
   }
+
+
 }
