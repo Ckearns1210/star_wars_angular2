@@ -17,6 +17,7 @@ export class Home {
 
     updateCharacter(name: string) {
       this.currentCharacterName = name
+      this.results =[];
     }
 
     updateResults(result) {

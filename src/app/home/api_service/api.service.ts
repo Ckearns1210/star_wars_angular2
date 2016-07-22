@@ -13,14 +13,15 @@ export class ApiService {
   }
 
   search(character): Observable<any> {
-  let that = this
-  let queryUrl: string = character.url;
-     return this.http.get(character.url)
-     //flatten out results of first results stream and extract the films, flatMap performs map, but instead of returning an observable, it subscribes to each observable returning the data.
+    let that = this
+    let queryUrl: string = character.url;
+    return this.http.get(character.url)
+      //flatten out results of first results stream and extract the films, flatMap performs map, but instead of returning an observable, it subscribes to each observable returning the data.
       .flatMap((response: Response) => response.json().films)
       //flatten out the second request,
       .flatMap((film: string) => this.http.get(film),
-               (_, resp) => resp.json())
-      .map(({title, release_date}) => ({title, release_date}))
+      (_, resp) => resp.json())
+      ////Typescript's object destructuring syntax
+      .map(({title, release_date}) => ({ title, release_date }))
   }
 }

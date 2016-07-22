@@ -5,7 +5,9 @@
       <div class="clash-card__unit-description">
         Appears In:
         <ul>
-          <li>
+          <li *ngFor="let result of results">
+            <!-- use date pipe for pretty date -->
+            {{result.title}} : {{result.release_date | date}}
           </li>
         </ul>
       </div>
