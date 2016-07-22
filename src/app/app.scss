@@ -1,0 +1,15 @@
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+characters {
+  position: absolute;
+}
+
+character-detail {
+  position: relative;
+  left: 40vw;
+  top: 5vh;
+}

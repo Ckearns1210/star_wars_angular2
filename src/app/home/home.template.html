@@ -1,15 +1,4 @@
 <div class="card-container">
-  <md-card *ngIf="dataReceived() === false" class="sample-content">
-    <md-progress-bar mode="indeterminate" color="warn" *ngIf="loading"></md-progress-bar>
-  </md-card>
-  <div *ngIf="dataReceived()">
-    <md-card *ngFor="let character of characterArray" (click)="logState(character)">{{character.name}}</md-card>
-  </div>
-  <md-card>
-    <md-card-title>Local State</md-card-title>
-    <md-card-content>
-        <button md-raised-button color="primary" (click)="submitState(localState)">Submit Value</button>
-      <pre>this.localState = {{ localState | json }}</pre>
-    </md-card-content>
-  </md-card>
+<characters></characters>
+<character-detail></character-detail>
 </div>

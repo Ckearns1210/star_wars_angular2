@@ -167,10 +167,10 @@ module.exports = {
       //SASS LOADER
 
       {
-          test: /\.scss$/,
-          exclude: /node_modules/,
-          loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-        },
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+      },
       /* Raw loader support for *.html
        * Returns file content as string
        *
@@ -180,7 +180,17 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      }
+      },
+      //Font-Awesome-Loader
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
+        // loader: "url?limit=10000"
+        loader: "url"
+      }, {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        loader: 'file'
+      },
 
     ]
 

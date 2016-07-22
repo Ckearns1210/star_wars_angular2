@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
-import { Title } from './title.service';
+import { CharacterData } from './character.service';
 
-describe('Title', () => {
+describe('CharacterData', () => {
   beforeEachProviders(() => [
     BaseRequestOptions,
     MockBackend,
@@ -21,22 +21,21 @@ describe('Title', () => {
       },
       deps: [MockBackend, BaseRequestOptions]
     },
-
-    Title
+    CharacterData
   ]);
 
 
-  it('should have http', inject([ Title ], (title) => {
-    expect(!!title.http).toEqual(true);
+  it('should have http', inject([ CharacterData ], (character) => {
+    expect(!!character.http).toEqual(true);
   }));
 
-  it('should get data from the server', inject([ Title ], (title) => {
+  it('should get data from the server', inject([ CharacterData ], (character) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 
-    title.getData();
+    character.getData();
     expect(console.log).toHaveBeenCalled();
-    expect(title.getData()).toEqual({ value: 'AngularClass' });
+    expect(character.getData()).toEqual({ value: 'AngularClass' });
   }));
 
 });
