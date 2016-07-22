@@ -1,6 +1,6 @@
 //model for character data
 export class MovieResult {
   constructor(
-    public name: string,
-    public url: string) { }
+    public title: string,
+    public release_date: Date) { }
 }

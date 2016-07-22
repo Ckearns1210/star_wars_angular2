@@ -1,8 +1,8 @@
 <div class="card-container card--fixedWidth">
-  <div *ngIf="dataReceived() === false" class="sample-content">
+  <div *ngIf="initialDataReceived() === false" class="sample-content">
     <md-progress-bar mode="indeterminate" color="warn" *ngIf="loading"></md-progress-bar>
   </div>
-  <div *ngIf="dataReceived()">
+  <div *ngIf="initialDataReceived()">
     <div *ngFor="let character of characterArray; let i=index" (click)="logState(character)" class="card">
       <div class="card__image" id="card-1">
         <div class="image-overlay">

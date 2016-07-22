@@ -29,7 +29,6 @@ import { AppState } from './app.service';
   `
 })
 export class App {
-
   starWarsLogo = 'assets/img/star_wars_logo.png';
   loading = false;
 
