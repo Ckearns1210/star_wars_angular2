@@ -57,5 +57,4 @@ currentCharacterName: string
    this.appState.set({character_chosen: '', state: 'characters'})
  }
 
-
 }

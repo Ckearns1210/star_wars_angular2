@@ -77,7 +77,7 @@ export class CharacterComponent {
     //set initial state to animate in characters
     this.submitState({ state: 'characters' })
   }
-
+//For character loading spinner
   checkCharacter(character) {
     if (this.appState.get().character_chosen === character.name) {
       return true
