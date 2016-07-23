@@ -1,5 +1,5 @@
 # Quick start
-**Make sure you have Node version >= 4.0 and NPM >= 3**
+**Make sure you have Node version >= 4.0 and NPM >= 3 and your text editor is setup for Typescript**
 
 ### clone repo
 `git clone https://github.com/Ckearns1210/star_wars_angular2.git`
