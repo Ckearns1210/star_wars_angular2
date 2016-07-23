@@ -1,15 +1,15 @@
-<div class="clash-card barbarian">
+<div @appStateObject = "appStateObject.state" class="clash-card barbarian">
   <div class="clash-card__image clash-card__image--barbarian">
-      <div class="character_name"  @cardState = "cardState.state">{{currentCharacterName}}</div>
+      <div class="character_name">{{currentCharacterName}}</div>
+      <div>
+        Appears In:
+        <ul>
+          <li *ngFor="let result of results">
+            <!-- use date pipe for pretty date -->
+            {{result.title}} : {{result.release_date | date}}
+          </li>
+        </ul>
+      </div>
   </div>
-
-  <div  @cardState = "cardState.state" class="clash-card__unit-description">
-    Appears In:
-    <ul>
-      <li *ngFor="let result of results">
-        <!-- use date pipe for pretty date -->
-        {{result.title}} : {{result.release_date | date}}
-      </li>
-    </ul>
-  </div>
-</div> <!-- end clash-card barbarian-->
+  <button (click)="changeState()">Change Back</button>
+</div>

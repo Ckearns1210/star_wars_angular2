@@ -13,12 +13,12 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    String('./app.scss'),
+    String('./app.scss'), ('../assets/css/normalize.css')
   ],
   template: `
     <md-content>
       <md-toolbar color="warn">
-          <img [src]="starWarsLogo" width="12%">
+          <img [src]="starWarsLogo" width="12%" style="max-height: 85%;">
           <span class="fill"></span>
       </md-toolbar>
       <md-progress-bar mode="indeterminate" color="primary" *ngIf="loading"></md-progress-bar>

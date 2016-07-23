@@ -18,11 +18,7 @@
 }
 
 .clash-card__image--barbarian {
-  background: url("/assets/img/starwarsbackground.jpg");
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
 }
 
 

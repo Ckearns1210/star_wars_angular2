@@ -3,24 +3,45 @@ p {
   font-size: 12px;
 }
 
+.Obi-wan {
+  background: url(/assets/img/obi.png);
+}
+
+.R2-D2 {
+  background: url(/assets/img/r2d2.png)
+}
+
+.Darth {
+  background: url(/assets/img/darth.png)
+}
+
+.Luke {
+  background: url(/assets/img/luke.png)
+}
+
 .card-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   border-radius: 4px;
   overflow: hidden;
-  margin: 25px 5px 5px 5px;
+  margin: 0 auto;
   padding: 5px;
+  width: 100vw;
+  height: 90vh;
+  justify-content: space-around;
+  align-items: center;
 }
+
 
 
 .card {
@@ -31,26 +52,28 @@ p {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   border-radius: 4px;
   -webkit-box-align: left;
   -webkit-align-items: left;
-      -ms-flex-align: left;
-          align-items: left;
+  -ms-flex-align: left;
+  align-items: left;
   margin: 5px;
-  padding: 0 0 15px 0;
-  width: 120px;
-  background: #fff;
+  padding: 0;
+  width: 12%;
   box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 140px;
 }
 
 .card__image {
   position: relative;
   width: 100%;
   display: block;
-  max-width: 120px;
-  height: 85px;
+  /* max-width: 120px; */
+  height: 140px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   overflow: hidden;
@@ -64,7 +87,7 @@ p {
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
 }
-.card__image:hover .image-overlay {
+.card__image:hover .image-overlay, .loading {
   background-color: rgba(35, 155, 55, 0.33);
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
@@ -126,7 +149,7 @@ p {
   display: block;
   position: absolute;
   width: 100%;
-  height: 85px;
+  height: 140px;
   top: 0;
   left: 0;
   content: "";
@@ -136,7 +159,12 @@ p {
 }
 .card__image img {
   display: block;
+  padding-bottom: -44px;
+  /* max-width: 100%; */
+  /* margin-bottom: -34px; */
   width: 100%;
+  height: 116%;
+  /* top: -6%; */
 }
 
 .card__actions {
@@ -159,18 +187,7 @@ p {
   background-color: rgba(35, 155, 55, 0.66);
 }
 
-span {
-  display: block;
-  border-radius: 3px;
-  margin: 1em 1em 0 1em;
-  background-color: #a3a3a3;
-}
-span._long {
-  margin-bottom: 1em;
-  height: 4px;
-  width: 68px;
-}
-span._short {
-  height: 4px;
-  width: 48px;
+.name {
+  color: white;
+  text-align: center;
 }

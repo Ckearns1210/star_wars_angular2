@@ -16,21 +16,12 @@ import { ApiService } from './api_service/api.service'
 export class Home {
    currentCharacterName: string
    results: Array<any> = []
-   cardState = {state: 'void'}
 
-    updateCardState(state) {
-      this.cardState = state
-      console.log(this.cardState)
-    }
-
-    updateCharacter(name: string) {
-      this.currentCharacterName = name
-      //set results back to 0
+    clearResults(boo) {
       this.results =[];
     }
 
     updateResults(result) {
       this.results.push(result)
-      console.log(this.results)
     }
 }

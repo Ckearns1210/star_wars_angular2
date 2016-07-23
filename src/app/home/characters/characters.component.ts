@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, trigger, state, style, transition, animate  } from '@angular/core';
 import { Character } from '../../models/character-models'
 import { AppState } from '../../app.service';
 import { CharacterData } from '../character_service/character.service';
@@ -10,78 +10,111 @@ import { ApiService } from '../api_service/api.service'
   providers: [
     CharacterData, ApiService
   ],
-  outputs: ['loadingEmit', 'results', 'resultsComplete', 'updateCharacter', 'cardState'],
-  pipes: [ ],
-  styleUrls: [ './characters.style.css', './spinner.css' ],
-  templateUrl: './characters.template.html'
+  outputs: ['results'],
+  pipes: [],
+  styleUrls: ['./characters.style.css', './spinner.css'],
+  templateUrl: './characters.template.html',
+  animations: [
+    trigger('appStateObject', [
+      state('characters', style({
+        transform: 'flex'
+      })),
+      state('movies', style({
+        display: 'none'
+      }))
+    ]),
+    trigger('enter', [
+      state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100%)'
+        }),
+        animate('0.2s ease-in')
+      ]),
+      transition('* => void', [
+        animate('0.2s 10 ease-out', style({
+          opacity: 0,
+          transform: 'translateX(100%)'
+        }))
+      ])
+    ])
+  ]
 })
+
 export class CharacterComponent {
-  private loadingEmit: EventEmitter<boolean> = new EventEmitter<boolean>();
-  private loading : boolean = false;
+  //loading boolean
+  private loading: boolean = false;
+  //Emit results from API call
   private results: EventEmitter<any> = new EventEmitter<any>();
-  public cardState: EventEmitter<boolean> = new EventEmitter<boolean>();
-  private updateCharacter: EventEmitter<any> = new EventEmitter<any>();
+  //Emit Character Name
+  private clearResults: EventEmitter<any> = new EventEmitter<any>();
+  //Initial Character Load Data
   private data: any
   //set empty characterArray of type Character(from character model)
   private characterArray: Array<Character> = []
-  // Set our default values
-  private localState = { character_chosen: '', displaying_movies: false };
-  constructor(public appState: AppState, public character: CharacterData, private apiService: ApiService) {
+  // Set our initial value
+  private appStateObject = { character_chosen: '', state: 'enter' }
 
-  }
+  constructor(public appState: AppState, public character: CharacterData, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    //subscribe to observable returned from http call in service, map over return and create iterable array of characters from character model to use in template for intial data
-    this.cardState.next({state: 'void'})
-    this.data = this.character.getData().subscribe(data =>
-      {
-        const dataArray= data.characters
-        dataArray.forEach((object)=>
-          this.characterArray.push(new Character(object.name, object.url))
-        )
-      });
+    this.data = this.character.getData().subscribe(data => {
+      //subscribe to observable returned from http call in service, map over return and create iterable array of characters from character model to use in template for intial data
+      const dataArray = data.characters
+      dataArray.forEach((object) =>
+        this.characterArray.push(new Character(object.name, object.url))
+      )
+    });
+    // subscribe to changes in appState
+    this.appState.getStateChangeEvent().subscribe((event) => {
+      this.appStateObject = event
+      console.log('New App State Is', this.appState.state);
+    })
+    this.submitState({ state: 'characters' })
   }
 
   checkCharacter(character) {
-    if (  this.appState.get().character_chosen === character.name) {
+    if (this.appState.get().character_chosen === character.name) {
       return true
     }
     else return false;
 
   }
   submitState(state) {
+    //submit to state storage
     this.appState.set(state)
-    console.log('app state is: ', this.appState.get())
   }
 
   getApiData(character) {
-    //emit loading event
-    this.loadingEmit.next(true);
+    //turn on loading
     this.loading = true;
+    //call api
     this.apiService.search(character)
-    .subscribe((results) => { // on sucesss
-          console.log(results)
-          this.results.next(results)
-        },
-        (err: any) => {
-          // on error
-          console.log(err);
-        },
-        () => { // on completion
-          this.cardState.next({state: 'active'})
-          this.loading = false;
-          this.loadingEmit.next(false)
-        }
+      .subscribe((results) => {
+        this.results.next(results)
+      },
+      (err: any) => {
+        // on error
+        console.log(err);
+      },
+      () => { // on completion
+        //set state to movies
+        this.submitState({ state: 'movies' })
+        //turn off loading
+        this.loading = false;
+      }
       );
   }
 
   logState(character) {
-    this.localState.character_chosen = character.name; this.localState.displaying_movies = false;
-    this.submitState(this.localState);
+    //submit state to state storage
+    this.submitState({ character_chosen: character.name });
+    // call api
     this.getApiData(character)
-    this.updateCharacter.next(character.name)
-    console.log('localState is: ', this.localState)
-    }
+    //change character name
+    this.clearResults.next(true)
+  }
 
 
 

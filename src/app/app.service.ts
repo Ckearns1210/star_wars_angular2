@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HmrState } from 'angular2-hmr';
 
 @Injectable()
 export class AppState {
+    private appState: EventEmitter<any> = new EventEmitter<any>();
   // @HmrState() is used by HMR to track the state of any object during HMR (hot module replacement)
-  @HmrState() _state = { character_chosen: '', displaying_movies: false };
+  @HmrState() _state = { character_chosen: '', state: 'enter' };
 
   constructor() {
 
+  }
+  getStateChangeEvent() {
+    return this.appState;
   }
 
   // already return a clone of the current state
@@ -31,6 +35,7 @@ export class AppState {
     for (var prop in object) {
           this._state[prop] = object[prop]
     }
+    this.appState.next(this._state);
     return this._state
   }
 
@@ -39,4 +44,5 @@ export class AppState {
     // simple object clone
     return JSON.parse(JSON.stringify( object ));
   }
+
 }
