@@ -5,7 +5,7 @@
 `git clone https://github.com/Ckearns1210/star_wars_angular2.git`
 
 ### change directory to repo
-cd star_wars_angular2
+`cd star_wars_angular2`
 
 ### add required global libraries if you do not have
 `npm install typings webpack-dev-server rimraf webpack -g`
