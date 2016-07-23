@@ -138,7 +138,6 @@ p {
   height: 100%;
   font-size: 1em;
   text-align: center;
-  content: url(/assets/img/spinner.svg);
   color: rgba(255, 255, 255, 0);
   color: #fff;
   -webkit-transition: all 0.15s;

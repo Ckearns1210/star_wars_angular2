@@ -1,15 +1,12 @@
-<div @appStateObject = "appStateObject.state" class="clash-card barbarian">
-  <div class="clash-card__image clash-card__image--barbarian">
+<div @appStateObject = "appStateObject.state" class="movies-container">
       <div class="character_name">{{currentCharacterName}}</div>
       <div>
-        Appears In:
         <ul>
           <li *ngFor="let result of results">
             <!-- use date pipe for pretty date -->
-            {{result.title}} : {{result.release_date | date}}
+            {{result.title}} | {{result.release_date | date}}
           </li>
         </ul>
       </div>
-  </div>
-  <button (click)="changeState()">Change Back</button>
+      <svg id="back" (click)="changeState()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="50px" height="50px" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
 </div>

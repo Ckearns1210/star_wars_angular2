@@ -10,18 +10,17 @@ import { ApiService } from '../api_service/api.service'
   providers: [
     CharacterData, ApiService
   ],
-  outputs: ['results'],
+  outputs: ['results', 'clearResults'],
   pipes: [],
   styleUrls: ['./characters.style.css', './spinner.css'],
   templateUrl: './characters.template.html',
   animations: [
     trigger('appStateObject', [
-      state('characters', style({
-        transform: 'flex'
-      })),
-      state('movies', style({
-        display: 'none'
-      }))
+      state('characters',style({ opacity: 1, transform: 'translateX(0)' })),
+      state('movies', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
+      transition('characters => movies', [
+        animate('0.2s ease-in')
+      ])
     ]),
     trigger('enter', [
       state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
@@ -35,7 +34,7 @@ import { ApiService } from '../api_service/api.service'
       transition('* => void', [
         animate('0.2s 10 ease-out', style({
           opacity: 0,
-          transform: 'translateX(100%)'
+          transform: 'translateX(100vw)'
         }))
       ])
     ])
@@ -47,7 +46,7 @@ export class CharacterComponent {
   private loading: boolean = false;
   //Emit results from API call
   private results: EventEmitter<any> = new EventEmitter<any>();
-  //Emit Character Name
+//clear search results
   private clearResults: EventEmitter<any> = new EventEmitter<any>();
   //Initial Character Load Data
   private data: any
@@ -87,11 +86,13 @@ export class CharacterComponent {
   }
 
   getApiData(character) {
+    this.clearResults.emit('event')
     //turn on loading
     this.loading = true;
     //call api
     this.apiService.search(character)
       .subscribe((results) => {
+
         this.results.next(results)
       },
       (err: any) => {
@@ -113,7 +114,7 @@ export class CharacterComponent {
     // call api
     this.getApiData(character)
     //change character name
-    this.clearResults.next(true)
+
   }
 
 

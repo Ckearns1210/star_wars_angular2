@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, trigger, state, style, transition, animate  } from '@angular/core';
 import { CharacterComponent } from './characters/characters.component';
 import { CharacterDetailComponent } from './character-detail/character-detail.component'
 import { ApiService } from './api_service/api.service'
@@ -14,10 +14,10 @@ import { ApiService } from './api_service/api.service'
   providers: [ApiService]
 })
 export class Home {
-   currentCharacterName: string
+  private appStateObject = { character_chosen: '', state: 'enter' }
    results: Array<any> = []
 
-    clearResults(boo) {
+    clearResults(event) {
       this.results =[];
     }
 

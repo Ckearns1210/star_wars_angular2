@@ -1,42 +1,30 @@
-.clash-card {
-  background: white;
-  width: 600px;
-  display: inline-block;
-  margin: auto;
-  border-radius: 19px;
-  position: relative;
-  text-align: center;
-  box-shadow: -1px 15px 30px -12px black;
-  z-index: 9999;
+.movies-container {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
 }
-
-.clash-card__image {
-  height: 250px;
-  margin-bottom: 35px;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-}
-
-.clash-card__image--barbarian {
-
-}
-
 
 .character_name {
   color: #fff;
   font-family: "ITC Serif Gothic", Lato;
   font-size: 2.25em;
-  letter-spacing: .2em;
-  text-align: center;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  margin-left: 3%;
+  text-align: center;
 }
 
-.clash-card__unit-name {
-  font-size: 26px;
-  color: black;
-  font-weight: 900;
-  margin-bottom: 5px;
+li {
+  list-style: none;
+  color: #fff;
+ font-family: "ITC Serif Gothic", Lato;
+ font-size: 1.25em;
+ letter-spacing: 0.4em;
+ text-transform: uppercase;
+ text-align: center;
 }
 
 
@@ -47,4 +35,9 @@
   content: " ";
   clear: both;
   height: 0;
+}
+
+#back {
+  fill: white;
+  margin-top: 25px;
 }
