@@ -1,0 +1,191 @@
+/*Only stylesheet that needs to be loaded in head*/
+
+
+.loader-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes wobble {
+  0% {
+    -webkit-transform: rotate(1.5deg);
+            transform: rotate(1.5deg);
+  }
+  30% {
+    -webkit-transform: rotate(26.25deg);
+            transform: rotate(26.25deg);
+  }
+  50% {
+    -webkit-transform: rotate(21deg);
+            transform: rotate(21deg);
+  }
+  70% {
+    -webkit-transform: rotate(26.25deg);
+            transform: rotate(26.25deg);
+  }
+  100% {
+    -webkit-transform: rotate(1.5deg);
+            transform: rotate(1.5deg);
+  }
+}
+@keyframes wobble {
+  0% {
+    -webkit-transform: rotate(1.5deg);
+            transform: rotate(1.5deg);
+  }
+  30% {
+    -webkit-transform: rotate(26.25deg);
+            transform: rotate(26.25deg);
+  }
+  50% {
+    -webkit-transform: rotate(21deg);
+            transform: rotate(21deg);
+  }
+  70% {
+    -webkit-transform: rotate(26.25deg);
+            transform: rotate(26.25deg);
+  }
+  100% {
+    -webkit-transform: rotate(1.5deg);
+            transform: rotate(1.5deg);
+  }
+}
+.bb8-head, .bb8-head .eye, .bb8-head .eye.little:after, .bb8-body, .bb8-body .port {
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.bb8-head, .bb8-body {
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF;
+}
+
+.bb8-head .eye.little:after, .bb8:before, .bb8:after {
+  position: absolute;
+  content: "";
+}
+
+.bb8 {
+  position: relative;
+}
+.bb8-head {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  left: 17.5px;
+  top: -32.5px;
+  -webkit-transform-origin: 50% 115%;
+          transform-origin: 50% 115%;
+  -webkit-animation: wobble 1.25s ease infinite;
+          animation: wobble 1.25s ease infinite;
+}
+.bb8-head .eye {
+  position: absolute;
+  background-color: #555555;
+}
+.bb8-head .eye.big {
+  width: 16.25px;
+  height: 16.25px;
+  left: 24.375px;
+  top: 8.125px;
+}
+.bb8-head .eye.little {
+  width: 8.125px;
+  height: 8.125px;
+  left: 44.6875px;
+  top: 21.66667px;
+}
+.bb8-head .eye.little:after {
+  width: 12.125px;
+  height: 12.125px;
+  left: -2px;
+  top: -2px;
+  border: 1px solid #555555;
+}
+.bb8-body {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  -webkit-animation: spin 0.9s linear infinite;
+          animation: spin 0.9s linear infinite;
+}
+.bb8-body .port {
+  position: absolute;
+  border: 7px solid #FFA229;
+}
+.bb8-body .port.port-1 {
+  width: 57.14286px;
+  height: 57.14286px;
+  top: -28.57143px;
+  left: 21.42857px;
+  -webkit-transform: rotate(330deg);
+          transform: rotate(330deg);
+  -webkit-transform-origin: 50% 137.5%;
+          transform-origin: 50% 137.5%;
+}
+.bb8-body .port.port-2 {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 30px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: 50% 175%;
+          transform-origin: 50% 175%;
+}
+.bb8-body .port.port-3 {
+  width: 25px;
+  height: 25px;
+  top: -12.5px;
+  left: 37.5px;
+  -webkit-transform: rotate(230deg);
+          transform: rotate(230deg);
+  -webkit-transform-origin: 50% 250%;
+          transform-origin: 50% 250%;
+}
+.bb8:before {
+  bottom: 0;
+  width: 40px;
+  left: 50px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.bb8:after {
+  bottom: 0;
+  width: 20px;
+  left: 90px;
+  border-bottom: 1px dashed #DDDDDD;
+}

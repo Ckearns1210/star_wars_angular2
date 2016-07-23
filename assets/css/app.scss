@@ -1,0 +1,21 @@
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "ITC Serif Gothic", Lato !important;
+
+}
+
+main {
+  background: url("/assets/img/starwarsbackground.jpg");
+  background-size: contain;
+  height: 100vh;
+}
+
+@media (max-width: 767px) {
+  main {
+    height: 190vh;
+  }
+}
