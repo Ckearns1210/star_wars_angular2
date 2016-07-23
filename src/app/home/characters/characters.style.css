@@ -189,7 +189,7 @@ p {
     flex-direction: column;
     overflow: initial;
     align-items: center;
-    padding-top: 200px;
+    height: 120vh;
   }
 
 
