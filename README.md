@@ -27,5 +27,3 @@ go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http
 ### Make build (dist folder) by running the following command from the root star_wars_angular2 Folder
 `cd star_wars_angular2` (make sure you are in the root and on the right branch)
 `npm run build:prod`
-
-

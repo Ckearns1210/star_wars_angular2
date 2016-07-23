@@ -188,11 +188,10 @@ p {
     -ms-flex-direction: column;
     flex-direction: column;
     overflow: initial;
+    align-items: center;
+    padding-top: 200px;
   }
 
-  span {
-    padding-top: 100px;
-  }
 
   .card {
     margin-top: 28px;

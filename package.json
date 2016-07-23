@@ -144,10 +144,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/Ckearns1210/star_wars_angular2.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/Ckearns1210/star_wars_angular2/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

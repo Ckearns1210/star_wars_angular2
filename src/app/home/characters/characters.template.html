@@ -1,3 +1,4 @@
+<!-- @appState for ngAnimate -->
 <div  @appStateObject = "appStateObject.state" class="card-container card--fixedWidth">
   <span @enter = "appStateObject.state" *ngFor="let character of characterArray; let i=index" >
     <div (click)="logState(character)" class="card {{character.name}}">
