@@ -55,6 +55,10 @@ path { transition: fill .4s ease; }
 }
 
 @media (max-width: 767px) {
+
+  .movies-container {
+    padding-right: 7vw;
+  }
   .character_name {
     font-size: 1.5em;
   }
