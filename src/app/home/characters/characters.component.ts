@@ -16,7 +16,7 @@ import { ApiService } from '../api_service/api.service'
   templateUrl: './characters.template.html',
   animations: [
     trigger('appStateObject', [
-      state('characters',style({ opacity: 1, transform: 'translateX(0)' })),
+      state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
       state('movies', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
       transition('characters => movies', [
         animate('0.2s ease-in')
