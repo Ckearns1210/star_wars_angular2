@@ -36,7 +36,7 @@ export const APPLICATION_PROVIDERS = [
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
 
-  { provide: LocationStrategy, useClass: HashLocationStrategy },
+  // { provide: LocationStrategy, useClass: HashLocationStrategy },
 
 ];
 
