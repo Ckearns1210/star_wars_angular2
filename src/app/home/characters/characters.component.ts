@@ -17,7 +17,7 @@ import { ApiService } from '../api_service/api.service'
   animations: [
     trigger('appStateObject', [
       state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
-      state('movies', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
+      state('movies', style({ opacity: 0, transform: 'translateX(-100vw)', position: 'absolute' })),
       transition('characters => movies', [
         animate('0.4s ease-in')
       ]),
@@ -36,7 +36,7 @@ import { ApiService } from '../api_service/api.service'
         animate('0.4s ease-in')
       ]),
       transition('* => void', [
-        animate('0.2s 10 ease-out', style({
+        animate('0.4s 10 ease-out', style({
           opacity: 0,
           transform: 'translateX(100vw)'
         }))

@@ -14,13 +14,20 @@ import { CharacterComponent } from '../characters/characters.component'
   templateUrl: './character-detail.template.html',
   animations: [
   trigger('appStateObject', [
-    state('characters', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
+    state('characters', style({ opacity: 0, transform: 'translateX(200vw)', position: 'absolute' })),
     state('movies', style({ opacity: 1, transform: 'translateX(0)' })),
     transition('characters => movies', [
-      animate('0.2s ease-in')
+      animate('0.4s ease-in')
     ]),
     transition('movies => characters', [
-      animate('0.3s ease-in')
+      animate('0.4s ease-out')
+    ]),
+    transition('* => characters', [
+      style({
+        opacity: 0,
+        transform: 'translateX(200vw)'
+      }),
+      animate('0.4s ease-out')
     ]),
   ])
 ]
