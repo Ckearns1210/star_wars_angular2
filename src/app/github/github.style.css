@@ -1,8 +1,15 @@
 .github {
   width: 32px;
   height: 32px;
-  position: absolute;
+  position: fixed;
   bottom: 16px;
   right: 23px;
   z-index: 11;
+  fill: #fff;
+}
+
+path { transition: fill .4s ease; }
+
+.github:hover {
+  fill: #D6BF7C;
 }

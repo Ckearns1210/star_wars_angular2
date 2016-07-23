@@ -22,7 +22,7 @@ import { CharacterComponent } from '../characters/characters.component'
     transition('movies => characters', [
       animate('0.3s ease-in')
     ]),
-  ]),
+  ])
 ]
 })
 

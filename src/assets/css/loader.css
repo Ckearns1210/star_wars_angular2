@@ -1,3 +1,6 @@
+/*Only stylesheet that needs to be loaded in head*/
+
+
 .loader-wrapper {
   width: 100vw;
   height: 100vh;

@@ -2,23 +2,18 @@ p {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
 }
-
 .Obi-wan {
   background: url(/assets/img/obi.png);
 }
-
 .R2-D2 {
   background: url(/assets/img/r2d2.png)
 }
-
 .Darth {
   background: url(/assets/img/darth.png)
 }
-
 .Luke {
   background: url(/assets/img/luke.png)
 }
-
 .card-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -41,9 +36,6 @@ p {
   justify-content: space-around;
   align-items: center;
 }
-
-
-
 .card {
   display: -webkit-box;
   display: -webkit-flex;
@@ -67,7 +59,6 @@ p {
   background-repeat: no-repeat;
   min-width: 140px;
 }
-
 .card__image {
   position: relative;
   width: 100%;
@@ -99,26 +90,23 @@ p {
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   bottom: -4em;
   position: absolute;
   width: 100%;
   height: 100%;
-
   font-size: 1em;
   text-align: center;
-
   color: rgba(255, 255, 255, 0);
   color: #fff;
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
 }
-
 .card__image.loading:after {
   display: -webkit-box;
   display: -webkit-flex;
@@ -126,12 +114,12 @@ p {
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   /*bottom: -4em;*/
   position: absolute;
   width: 100%;
@@ -143,7 +131,6 @@ p {
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
 }
-
 .card__image .image-overlay {
   display: block;
   position: absolute;
@@ -165,7 +152,6 @@ p {
   height: 116%;
   /* top: -6%; */
 }
-
 .card__actions {
   font-family: serif;
   font-size: 25px;
@@ -175,7 +161,6 @@ p {
   padding: 0 8px 0 0;
   margin: 0;
 }
-
 .card.is-checked .card__image:after {
   font-size: 2.26em;
   bottom: 0;
@@ -185,8 +170,31 @@ p {
 .card.is-checked .card__image .image-overlay {
   background-color: rgba(35, 155, 55, 0.66);
 }
-
 .name {
+  margin-top: 20px;
   color: white;
   text-align: center;
+  font-size: .9em;
+  text-transform: uppercase;
+  font-weight: lighter;
+  letter-spacing: .1em;
+}
+@media (max-width: 767px) {
+  .card-container {
+    -webkit-flex-wrap: initial;
+    -ms-flex-wrap: initial;
+    flex-wrap: initial;
+     -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow: initial;
+  }
+
+  span {
+    padding-top: 100px;
+  }
+
+  .card {
+    margin-top: 28px;
+  }
 }

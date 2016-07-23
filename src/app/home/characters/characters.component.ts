@@ -19,17 +19,21 @@ import { ApiService } from '../api_service/api.service'
       state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
       state('movies', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
       transition('characters => movies', [
-        animate('0.2s ease-in')
-      ])
+        animate('0.4s ease-in')
+      ]),
+      transition('movies => characters', [
+        animate('0.4s ease-out')
+      ]),
+
     ]),
     trigger('enter', [
       state('characters', style({ opacity: 1, transform: 'translateX(0)' })),
       transition('void => *', [
         style({
           opacity: 0,
-          transform: 'translateX(-100%)'
+          transform: 'translateX(200vw)'
         }),
-        animate('0.2s ease-in')
+        animate('0.4s ease-in')
       ]),
       transition('* => void', [
         animate('0.2s 10 ease-out', style({
@@ -46,7 +50,7 @@ export class CharacterComponent {
   private loading: boolean = false;
   //Emit results from API call
   private results: EventEmitter<any> = new EventEmitter<any>();
-//clear search results
+  //clear search results
   private clearResults: EventEmitter<any> = new EventEmitter<any>();
   //Initial Character Load Data
   private data: any
@@ -70,6 +74,7 @@ export class CharacterComponent {
       this.appStateObject = event
       console.log('New App State Is', this.appState.state);
     })
+    //set initial state to animate in characters
     this.submitState({ state: 'characters' })
   }
 
@@ -113,8 +118,6 @@ export class CharacterComponent {
     this.submitState({ character_chosen: character.name });
     // call api
     this.getApiData(character)
-    //change character name
-
   }
 
 

@@ -5,7 +5,7 @@ import { ApiService } from './api_service/api.service'
 
 
 
-//Dumb Parent Component
+//Dumb Parent Component aka The Conductor
 @Component({
   selector: 'home',
   directives: [CharacterComponent, CharacterDetailComponent],

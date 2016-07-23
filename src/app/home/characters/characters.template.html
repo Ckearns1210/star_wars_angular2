@@ -1,7 +1,4 @@
 <div  @appStateObject = "appStateObject.state" class="card-container card--fixedWidth">
-  <div *ngIf="initialDataReceived() === false" class="sample-content">
-    <md-progress-bar mode="indeterminate" color="warn" *ngIf="loading"></md-progress-bar>
-  </div>
   <span @enter = "appStateObject.state" *ngFor="let character of characterArray; let i=index" >
     <div (click)="logState(character)" class="card {{character.name}}">
       <div class="card__image" [ngClass]="{loading: loading}">
