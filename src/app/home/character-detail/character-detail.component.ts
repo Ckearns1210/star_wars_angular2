@@ -14,7 +14,7 @@ import { CharacterComponent } from '../characters/characters.component'
   templateUrl: './character-detail.template.html',
   animations: [
   trigger('appStateObject', [
-    state('characters',style({ opacity: 0, transform: 'translateX(-100vw)' display: 'none'})),
+    state('characters', style({ opacity: 0, transform: 'translateX(-100vw)', display: 'none' })),
     state('movies', style({ opacity: 1, transform: 'translateX(0)' })),
     transition('characters => movies', [
       animate('0.2s ease-in')

@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import { GithubComponent } from './github/github.component'
 
 /*
  * App Component
@@ -13,7 +14,7 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    String('./app.scss'), ('../assets/css/normalize.css')
+    String('../assets/css/app.scss'), ('../assets/css/normalize.css')
   ],
   template: `
     <md-content>
@@ -25,8 +26,10 @@ import { AppState } from './app.service';
       <main>
         <router-outlet></router-outlet>
       </main>
+      <github></github>
     </md-content>
-  `
+  `,
+  directives: [GithubComponent]
 })
 export class App {
   starWarsLogo = 'assets/img/star_wars_logo.png';
