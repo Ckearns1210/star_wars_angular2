@@ -35,7 +35,22 @@ describe('CharacterData', () => {
 
     character.getData();
     expect(console.log).toHaveBeenCalled();
-    expect(character.getData()).toEqual({ value: 'AngularClass' });
+    expect(character.getData()).toEqual({
+      "characters": [{
+        "name": "Luke Skywalker",
+        "url": "https://swapi.co/api/people/1/"
+      }, {
+        "name": "Darth Vader",
+        "url": "https://swapi.co/api/people/4/"
+      }, {
+        "name": "Obi-wan Kenobi",
+        "url": "https://swapi.co/api/people/10/"
+      }, {
+        "name": "R2-D2",
+        "url": "https://swapi.co/api/people/2/"
+      }]
+    }
+);
   }));
 
 });
