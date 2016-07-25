@@ -184,16 +184,15 @@ p {
     -webkit-flex-wrap: initial;
     -ms-flex-wrap: initial;
     flex-wrap: initial;
-     -webkit-flex-direction: column;
+    -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
     overflow: initial;
     align-items: center;
-    height: 120vh;
+    height: 130vh;
   }
-
-
   .card {
     margin-top: 28px;
+    margin-bottom: 20px;
   }
 }

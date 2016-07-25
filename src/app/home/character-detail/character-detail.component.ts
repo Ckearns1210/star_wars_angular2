@@ -2,7 +2,9 @@ import { Component, ChangeDetectionStrategy, OnInit, trigger, state, style, tran
 import { Character } from '../../models/character-models'
 import { AppState } from '../../app.service';
 import { CharacterData } from '../character_service';
-import { CharacterComponent } from '../characters/characters.component'
+import { CharacterComponent } from '../characters/characters.component';
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+
 
 @Component({
   selector: 'character-detail',
@@ -45,7 +47,14 @@ currentCharacterName: string
    this.appState.getStateChangeEvent().subscribe((event) => {
      this.currentCharacterName = event.character_chosen
       this.appStateObject = event
+      //autoscroll workaround for mobile, API may change on this
+      if (this.appStateObject.state === 'movies') {
+          window.scrollTo(0, 0);
+      }
+
     })
+
+
  }
 
  submitState(state) {

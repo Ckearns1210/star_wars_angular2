@@ -42,5 +42,9 @@
     <!-- Webpack Dev Server reload -->
     <script src="/webpack-dev-server.js"></script>
     <% } %>
+    <!-- polyfill needed for the date pipe.  Intl is not yet supported in safari and older browsers, adds substantial network resources, look for better fix as Angular moves towards release CTK July 25-->
+    <!-- https://github.com/angular/angular/issues/3333 -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+
 </body>
 </html>
