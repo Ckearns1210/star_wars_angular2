@@ -1,5 +1,5 @@
 # Working plunkr example here : 
-**[http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview](http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview)
+[http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview](http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview)
 
 
 # Quick start
