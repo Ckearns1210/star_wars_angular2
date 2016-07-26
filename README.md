@@ -1,4 +1,4 @@
-##An experiment with RXjs observables, dependent/chained async http calls, state control, and ngAnimate. 
+###An experiment with RXjs observables, dependent/chained async http calls, state control, and ngAnimate. 
 
 
 # Working plunker example here:
