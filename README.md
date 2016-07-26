@@ -1,4 +1,4 @@
-# Working plunkr example here : 
+# Working plunker example here (slightly different setup with systemJS instead of webpack and no Material UI library) : 
 [http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview](http://plnkr.co/edit/5SEjvEU1nV9jtTaLLDnf?p=preview)
 
 
